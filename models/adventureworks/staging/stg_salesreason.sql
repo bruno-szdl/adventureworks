@@ -4,7 +4,7 @@ with
       -- primary key
       salesreasonid
 
-      name
+      , name
       , reasontype
       , modifieddate
 

@@ -4,9 +4,12 @@ sources:
   - name: adventureworks_integration
     tables:
       - name: address
+      - name: businessentityaddress
       - name: countryregion
       - name: creditcard
+      - name: customer
       - name: person
+      - name: personcreditcard
       - name: product
       - name: salesorderdetail
       - name: salesorderheader

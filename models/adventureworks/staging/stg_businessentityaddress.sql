@@ -5,13 +5,9 @@ with
       addressid
 
       -- foreign keys
-      , stateprovinceid
+      , businessentityid
 
-      , addressline1
-      , addressline2
-      , city
-      , postalcode
-      , spatiallocation
+      , addresstypeid
       , modifieddate	
       , rowguid
         
@@ -21,6 +17,6 @@ with
       , _sdc_sequence
       , _sdc_batched_at
         	
-    from {{  source('adventureworks_integration', 'address')  }}
+    from {{  source('adventureworks_integration', 'businessentityaddress')  }}
   )
 select * from source_data

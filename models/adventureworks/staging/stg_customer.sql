@@ -2,16 +2,13 @@ with
   source_data as (
     select 
       -- primary key
-      addressid
+      customerid
 
       -- foreign keys
-      , stateprovinceid
+      , personid
+      , storeid
+      , territoryid
 
-      , addressline1
-      , addressline2
-      , city
-      , postalcode
-      , spatiallocation
       , modifieddate	
       , rowguid
         
@@ -21,6 +18,6 @@ with
       , _sdc_sequence
       , _sdc_batched_at
         	
-    from {{  source('adventureworks_integration', 'address')  }}
+    from {{  source('adventureworks_integration', 'customer')  }}
   )
 select * from source_data

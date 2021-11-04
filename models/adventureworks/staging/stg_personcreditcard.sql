@@ -2,18 +2,10 @@ with
   source_data as (
     select 
       -- primary key
-      addressid
+      creditcardid
 
       -- foreign keys
-      , stateprovinceid
-
-      , addressline1
-      , addressline2
-      , city
-      , postalcode
-      , spatiallocation
-      , modifieddate	
-      , rowguid
+      , businessentityid
         
       -- stitch
       , _sdc_table_version
@@ -21,6 +13,6 @@ with
       , _sdc_sequence
       , _sdc_batched_at
         	
-    from {{  source('adventureworks_integration', 'address')  }}
+    from {{  source('adventureworks_integration', 'personcreditcard')  }}
   )
 select * from source_data
