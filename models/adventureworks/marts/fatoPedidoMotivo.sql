@@ -28,8 +28,7 @@ with
     )
     , final as (
         select
-            {{ dbt_utils.surrogate_key('pedidos_com_sk.pedidoid', 'motivos_com_sk.motivoid') }} as pedidoMotivoSK
-            , pedidos_com_sk.pedidoFK
+            pedidos_com_sk.pedidoFK
             , motivos_com_sk.motivoFK
 
         from pedidos_com_sk
