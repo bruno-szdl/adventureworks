@@ -9,7 +9,7 @@ with
         select
             {{ dbt_utils.surrogate_key('productid') }} as produtoSK
             , productid as produtoid
-            , name as nome
+            , name as produto
 
         from staging
     )
