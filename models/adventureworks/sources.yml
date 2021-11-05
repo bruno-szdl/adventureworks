@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: adventureworks_integration
+    tables:
+      - name: address
+      - name: countryregion
+      - name: creditcard
+      - name: customer
+      - name: person
+      - name: product
+      - name: salesorderdetail
+      - name: salesorderheader
+      - name: salesorderheadersalesreason
+      - name: salesreason
+      - name: stateprovince

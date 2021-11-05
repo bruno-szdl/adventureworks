@@ -1,0 +1,104 @@
+version: 2
+
+models:
+    - name: fatoPedidoProduto
+      description: Tabela de fatos contendo informações sobre os produtos de cada pedido.
+      columns:
+          - name: pedidoFK
+            description: "Chave estrangeira que liga a tabela fato com a tabela de dimPedido."
+            tests:
+              - relationships:
+                  to: ref('dimPedido')
+                  field: pedidoSK
+              - not_null
+          - name: produtoFK
+            description: "Chave estrangeira que liga a tabela fato com a tabela de dimProduto."
+            tests:
+              - relationships:
+                  to: ref('dimProduto')
+                  field: produtoSK
+              - not_null
+          - name: precounitario
+            description: "Preço unitário do produto."
+          - name: descontoPrecoUnitario
+            description: "Desconto aplicado ao preço unitário do produto."
+          - name: quantidade
+            description: "Quantidade de unidades do produto no pedido."
+
+    - name: fatoPedidoMotivo
+      description: Tabela de fatos contendo a chave para a tabela de dimensão dimMotivos.
+      columns:
+          - name: pedidoFK
+            description: "Chave estrangeira que liga a tabela fato com a tabela de dimPedido."
+            tests:
+              - relationships:
+                  to: ref('dimPedido')
+                  field: pedidoSK
+              - not_null
+          - name: motivoFK
+            description: "Chave estrangeira que liga a tabela fato com a tabela de dimMotivo."
+            tests:
+              - relationships:
+                  to: ref('dimMotivo')
+                  field: motivoSK
+
+    - name: dimPedido
+      description: Tabela de dimensão contendo informações sobre os pedidos.
+      columns:
+          - name: pedidoSK
+            description: "Chave surrogada da tabela."
+            tests:
+              - not_null
+          - name: pedidoid
+            description: "Id do pedido, usado para criação das tabelas fato no dbt."
+            tests:
+              - not_null
+          - name: ano
+            description: "Ano em que o pedido foi feito."
+          - name: mes
+            description: "Mês em que o pedido foi feito."
+          - name: status
+            description: "Status do pedido. 1 = Em Processamento; 2 = Aprovado; 3 = Em espera; 4 = Rejeitado; 5 = Enviado; 6 = Cancelado."
+          - name: cliente
+            description: "Nome do cliente."
+          - name: pais
+            description: "País para onde o pedido foi enviado."
+          - name: estado
+            description: "Estado para onde o pedido foi enviado."
+          - name: cidade
+            description: "Cidade para onde o pedido foi enviado."
+          - name: cartao
+            description: "Tipo de cartao utilizado na compra."
+
+    - name: dimProduto
+      description: Tabela de dimensão contendo informações sobre os produtos.
+      columns:
+          - name: produtoSK
+            description: "Chave surrogada da tabela."
+            tests:
+              - not_null
+          - name: produtoid
+            description: "Id do produto, usado para criação da tabela fato fatoPedidoProduto no dbt."
+            tests:
+              - not_null
+          - name: produto
+            description: "Nome do produto."
+
+    - name: dimMotivo
+      description: Tabela de dimensão contendo informações sobre o motivo das vendas.
+      columns:
+          - name: motivoSK
+            description: "Chave surrogada da tabela."
+            tests:
+              - unique
+              - not_null
+          - name: motivoid
+            description: "Id do motivo, usado para criação da tabela fato fatoPedidoMotivo no dbt."
+            tests:
+              - unique
+              - not_null
+          - name: motivoDaVenda
+            description: "Descrição do motivo da venda."
+          - name: tipodeMotivo
+            description: "Categoria do motivo da venda."
+
