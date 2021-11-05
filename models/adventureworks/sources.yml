@@ -4,7 +4,6 @@ sources:
   - name: adventureworks_integration
     tables:
       - name: address
-      - name: businessentityaddress
       - name: countryregion
       - name: creditcard
       - name: customer

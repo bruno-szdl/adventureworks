@@ -58,7 +58,7 @@ models:
           - name: mes
             description: "Mês em que o pedido foi feito."
           - name: status
-            description: "Status do pedido. 1 = Processamento; 2 = Aprovado; 3 = Em espera; 4 = Rejeitado; 5 = Enviado; 6 = Cancelado."
+            description: "Status do pedido. 1 = Em Processamento; 2 = Aprovado; 3 = Em espera; 4 = Rejeitado; 5 = Enviado; 6 = Cancelado."
           - name: cliente
             description: "Nome do cliente."
           - name: pais

@@ -13,10 +13,6 @@ with
         select *
         from {{  ref('stg_customer')  }}
     )
-    , enderecoCliente as (
-        select *
-        from {{  ref('stg_businessentityaddress')  }}
-    )
     , endereco as (
         select *
         from {{  ref('stg_address')  }}
@@ -39,7 +35,14 @@ with
             , pedido.salesorderid as pedidoid
             , extract(year from pedido.orderdate) as ano
             , extract(month from pedido.orderdate) as mes
-            , pedido.status
+            , case
+                when pedido.status = 1 then 'Em Processamento'
+                when pedido.status = 2 then 'Aprovado'
+                when pedido.status = 3 then 'Em Espera'
+                when pedido.status = 4 then 'Rejeitado'
+                when pedido.status = 5 then 'Enviado'
+                when pedido.status = 6 then 'Cancelado'
+              end as status
             , concat(if(title is null, ' ', pessoa.title), ' ', pessoa.firstname, ' ', pessoa.lastname) as cliente
             , pais.name as pais
             , estado.name as estado
@@ -49,8 +52,7 @@ with
         from pedido
         left join cliente on cliente.customerid = pedido.customerid
         left join pessoa on pessoa.businessentityid = cliente.personid
-        left join enderecoCliente on enderecoCliente.businessentityid = cliente.personid
-        left join endereco on endereco.addressid = enderecoCliente.addressid
+        left join endereco on endereco.addressid = pedido.shiptoaddressid
         left join estado on estado.stateprovinceid = endereco.stateprovinceid
         left join pais on pais.countryregioncode = estado.countryregioncode
         left join cartao on cartao.creditcardid = pedido.creditcardid
