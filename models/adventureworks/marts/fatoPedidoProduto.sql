@@ -29,7 +29,6 @@ with
         
         from {{  ref('stg_salesorderdetail')  }} detalhes
         left join dimProduto on dimProduto.produtoid = detalhes.productid
-
     )
     , final as (
         select
@@ -41,8 +40,8 @@ with
             , detalhes_com_sk.quantidade
             , pedidos_com_sk.frete
 
-            from pedidos_com_sk
-            left join detalhes_com_sk on pedidos_com_sk.pedidoid = detalhes_com_sk.pedidoid
+        from pedidos_com_sk
+        left join detalhes_com_sk on pedidos_com_sk.pedidoid = detalhes_com_sk.pedidoid
     )
 
 select * from final

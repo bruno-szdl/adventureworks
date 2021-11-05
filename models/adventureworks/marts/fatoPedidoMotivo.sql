@@ -16,7 +16,6 @@ with
 
         from {{  ref('stg_salesorderheader')  }} cabecalho
         left join dimPedido on dimPedido.pedidoid = cabecalho.salesorderid
-
     )
     , motivos_com_sk as (
         select
@@ -26,7 +25,6 @@ with
         
         from {{  ref('stg_salesorderheadersalesreason')  }} cabecalhoMotivo
         left join dimMotivo on dimMotivo.motivoid = cabecalhoMotivo.salesreasonid
-
     )
     , final as (
         select
@@ -34,8 +32,8 @@ with
             , pedidos_com_sk.pedidoFK
             , motivos_com_sk.motivoFK
 
-            from pedidos_com_sk
-            left join motivos_com_sk on pedidos_com_sk.pedidoid = motivos_com_sk.pedidoid
+        from pedidos_com_sk
+        left join motivos_com_sk on pedidos_com_sk.pedidoid = motivos_com_sk.pedidoid
     )
 
 select * from final

@@ -7,10 +7,10 @@ with
     )
     , transformed as (
         select
-          {{ dbt_utils.surrogate_key('salesreasonid') }} as motivoSK
-          , salesreasonid as motivoid
-          , name as motivoDaVenda
-          , reasontype as tipoDeMotivo
+            {{ dbt_utils.surrogate_key('salesreasonid') }} as motivoSK
+            , salesreasonid as motivoid
+            , name as motivoDaVenda
+            , reasontype as tipoDeMotivo
 
         from staging
     )

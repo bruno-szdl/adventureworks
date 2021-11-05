@@ -35,16 +35,17 @@ with
     )
     , joined as (
         select
-          {{ dbt_utils.surrogate_key('pedido.salesorderid') }} as pedidoSK
-          , pedido.salesorderid as pedidoid
-          , extract(year from pedido.orderdate) as ano
-          , extract(month from pedido.orderdate) as mes
-          , pedido.status
-          , concat(if(title is null, ' ', pessoa.title), ' ', pessoa.firstname, ' ', pessoa.lastname) as cliente
-          --, pais.name as pais
-          --, estado.name as estado
-          --, endereco.city as cidade
-          --, cartao.cardtype as cartao
+            {{ dbt_utils.surrogate_key('pedido.salesorderid') }} as pedidoSK
+            , pedido.salesorderid as pedidoid
+            , extract(year from pedido.orderdate) as ano
+            , extract(month from pedido.orderdate) as mes
+            , pedido.status
+            , concat(if(title is null, ' ', pessoa.title), ' ', pessoa.firstname, ' ', pessoa.lastname) as cliente
+            , pais.name as pais
+            , estado.name as estado
+            , endereco.city as cidade
+            , cartao.cardtype as cartao
+
         from pedido
         left join cliente on cliente.customerid = pedido.customerid
         left join pessoa on pessoa.businessentityid = cliente.personid
