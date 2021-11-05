@@ -9,7 +9,6 @@ sources:
       - name: creditcard
       - name: customer
       - name: person
-      - name: personcreditcard
       - name: product
       - name: salesorderdetail
       - name: salesorderheader
