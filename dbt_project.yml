@@ -4,9 +4,6 @@
 # name or the intended use of these models
 <<<<<<< HEAD
 name: 'adventureworks_dw'
-=======
-name: 'my_new_project'
->>>>>>> 478e6ec275cc558b5956ca895d2b54930288b968
 version: '1.0.0'
 config-version: 2
 
@@ -39,9 +36,4 @@ models:
 <<<<<<< HEAD
   adventureworks_dw:
       adventureworks:
-=======
-  my_new_project:
-      # Applies to all files under models/example/
-      example:
->>>>>>> 478e6ec275cc558b5956ca895d2b54930288b968
           materialized: view
