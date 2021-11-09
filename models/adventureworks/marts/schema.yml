@@ -24,6 +24,8 @@ models:
             description: "Desconto aplicado ao preço unitário do produto."
           - name: quantidade
             description: "Quantidade de unidades do produto no pedido."
+          - name: valorNegociado
+            description: "Valor negociado. Preço unitário vezes quantidade."
 
     - name: fatoPedidoMotivo
       description: Tabela de fatos contendo a chave para a tabela de dimensão dimMotivos.
