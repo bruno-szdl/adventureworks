@@ -53,6 +53,8 @@ models:
             description: "Id do pedido, usado para criação das tabelas fato no dbt."
             tests:
               - not_null
+          - name: data
+            description: "Data completa em que o pedido foi feito"
           - name: ano
             description: "Ano em que o pedido foi feito."
           - name: mes

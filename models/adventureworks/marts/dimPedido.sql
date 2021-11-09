@@ -33,6 +33,7 @@ with
         select
             {{ dbt_utils.surrogate_key('pedido.salesorderid') }} as pedidoSK
             , pedido.salesorderid as pedidoid
+            , pedido.orderdate as data
             , extract(year from pedido.orderdate) as ano
             , extract(month from pedido.orderdate) as mes
             , case
