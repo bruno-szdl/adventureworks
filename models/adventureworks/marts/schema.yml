@@ -20,12 +20,10 @@ models:
               - not_null
           - name: precounitario
             description: "Preço unitário do produto."
-          - name: descontoPrecoUnitario
-            description: "Desconto aplicado ao preço unitário do produto."
           - name: quantidade
             description: "Quantidade de unidades do produto no pedido."
           - name: valorNegociado
-            description: "Valor negociado. Preço unitário vezes quantidade."
+            description: "Valor negociado. Levando em conta o preço unitário, quantidade e desconto."
 
     - name: fatoPedidoMotivo
       description: Tabela de fatos contendo a chave para a tabela de dimensão dimMotivos.
@@ -55,6 +53,8 @@ models:
             description: "Id do pedido, usado para criação das tabelas fato no dbt."
             tests:
               - not_null
+          - name: valorNegociado
+            description: "Valor negociado do pedido. Levando em conta preço unitário, quantidade e desconto de cada produto."
           - name: data
             description: "Data completa em que o pedido foi feito"
           - name: ano
