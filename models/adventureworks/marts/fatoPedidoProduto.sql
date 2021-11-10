@@ -24,9 +24,8 @@ with
             , detalhes.salesorderdetailid as detalheid
             , dimProduto.produtoSK as produtoFK
             , detalhes.unitprice as precoUnitario
-            , detalhes.unitpricediscount as descontoPrecoUnitario
             , detalhes.orderqty as quantidade
-            , detalhes.unitprice*detalhes.orderqty as valorNegociado
+            , detalhes.unitprice*detalhes.orderqty*(1-detalhes.unitpricediscount) as valorNegociado
         
         from {{  ref('stg_salesorderdetail')  }} detalhes
         left join dimProduto on dimProduto.produtoid = detalhes.productid
@@ -36,7 +35,6 @@ with
             pedidos_com_sk.pedidoFK
             , detalhes_com_sk.produtoFK
             , detalhes_com_sk.precounitario
-            , detalhes_com_sk.descontoPrecoUnitario
             , detalhes_com_sk.quantidade
             , detalhes_com_sk.valorNegociado
 
