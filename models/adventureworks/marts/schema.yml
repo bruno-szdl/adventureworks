@@ -56,11 +56,7 @@ models:
           - name: valorNegociado
             description: "Valor negociado do pedido. Levando em conta preço unitário, quantidade e desconto de cada produto."
           - name: data
-            description: "Data completa em que o pedido foi feito"
-          - name: ano
-            description: "Ano em que o pedido foi feito."
-          - name: mes
-            description: "Mês em que o pedido foi feito."
+            description: "Data em que o pedido foi feito"
           - name: status
             description: "Status do pedido. 1 = Em Processamento; 2 = Aprovado; 3 = Em espera; 4 = Rejeitado; 5 = Enviado; 6 = Cancelado."
           - name: cliente
