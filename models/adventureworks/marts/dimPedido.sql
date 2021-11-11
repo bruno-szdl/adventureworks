@@ -35,8 +35,6 @@ with
             , pedido.salesorderid as pedidoid
             , pedido.subtotal as valorNegociado
             , pedido.orderdate as data
-            , extract(year from pedido.orderdate) as ano
-            , extract(month from pedido.orderdate) as mes
             , case
                 when pedido.status = 1 then 'Em Processamento'
                 when pedido.status = 2 then 'Aprovado'
